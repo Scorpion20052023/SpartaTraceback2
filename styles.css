@@ -1,0 +1,390 @@
+@import url();
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+/*
+.dancing-script-form-box {
+  font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+*/
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(./images/backIndex2.png);
+}
+
+.wrapper{
+    display: flex;
+    position: relative;
+    width: 60vw;
+    height: 73vh;
+    background: transparent;
+    border: 2px solid rgb(183, 0, 255);
+    box-shadow: 0 0 25px rgb(183, 0, 255);
+    overflow: hidden;
+    
+}
+
+.wrapper .form-box {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wrapper .form-box.login {
+    left: 0;
+    padding: 0 60px 0 40px;
+}
+
+.wrapper .form-box.login .animation {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition: .9s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.active .form-box.login .animation {
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+
+.wrapper .form-box.register{
+    right: 0;
+    padding: 0 40px 0 60px;
+    pointer-events: none;
+}
+
+.wrapper.active .form-box.register{
+    pointer-events: auto;
+}
+
+.wrapper .form-box.register .animation {
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .9s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.active .form-box.register .animation {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--i));
+}
+
+.form-box h2{
+    font-size: 3em;
+    font-family: "Dancing Script", cursive;
+    color: rgb(255, 238, 0);
+    text-align: center;
+    font-weight: bolder;
+}
+
+.form-box .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 20px 0;
+
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid white;
+    font-size: 1.2em;
+    color: #fff;
+    font-weight: 500;
+    transition: .5s;
+}
+
+.input-box input:focus,
+.input-box input:valid {
+    border-bottom-color: rgb(246, 255, 0);
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    color: white;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label{
+    top: -5px;
+    color: rgb(246, 255, 0);
+}
+
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.role-label {
+    font-size: 1.2em;
+    color: #fff;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+.role-select {
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #f6ff00;
+    border-radius: 6px;
+    outline: none;
+    width: 50%;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bolder;
+}
+
+/* Make dropdown options transparent even on hover */
+.role-select option {
+    color: rgb(0, 0, 0);
+    font-size: 1.2em;
+}
+
+/* On hover or highlight */
+.role-select option:hover,
+.role-select option:focus,
+.role-select option:checked {
+    background: transparent !important;
+    color: #000000 !important;
+}
+
+
+.input-box i{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 1.3em;
+    color: rgb(255, 255, 255);
+    background: transparent;
+    transition: .5s;
+}
+
+.input-box input:focus~i,
+.input-box input:valid~i {
+    color: rgb(246, 255, 0);
+    background: transparent;
+}
+
+.btn{
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border: 2px solid rgb(208, 0, 255);
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: white;
+    font-weight: bolder;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btn::before{
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 300%;
+    background: linear-gradient(#081b29, rgb(183, 0, 255), #081b29, rgb(183, 0, 255));
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn:hover::before{
+    top: 0;
+
+}
+.form-box .logreg-link{
+    font-size: 1.1em;
+    color: white;
+    text-align: center;
+    margin: 20px 0 10px;
+
+}
+
+.logreg-link p a{
+    color: rgb(246, 255, 0);
+    text-decoration: none;
+    font-weight: 600;
+
+}
+
+.logreg-link p a:hover{
+    text-decoration: underline;
+}
+
+.recover {
+    text-align: left;
+    margin-top: 1.3em;
+}
+
+.recover a {
+    text-decoration: none;
+    color: rgb(136, 255, 0);
+}
+
+.recover a:hover {
+    color: rgb(136, 255, 0);
+    font-size: 1.2em;
+    transition: 0.5s;
+}
+
+.wrapper .info-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+}
+
+.wrapper .info-text.login{
+    right: 0;
+    text-align: right;
+    padding: 0 40px 60px 150px;
+}
+
+.wrapper .info-text.login .animation {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition: .9s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.active .info-text.login .animation {
+    transform: translateX(120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition-delay: calc(.1s * var(--i));
+}
+
+.wrapper .info-text.register {
+    left: 0;
+    text-align: left;
+    padding: 0 150px 60px 40px;
+    pointer-events: none;
+}
+
+.wrapper.active .info-text.register{
+    pointer-events: auto;
+}
+
+.wrapper .info-text.register .animation {
+    transform: translateX(-120%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: .9s ease;
+    transition-delay: calc(.1s * var(--j));
+}
+
+.wrapper.active .info-text.register .animation {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(.1s * var(--i));
+}
+
+.info-text h2 {
+    font-size: 3em;
+    font-family: "Dancing Script", cursive;
+    color: rgb(255, 238, 0);
+    line-height: 1.3;
+    text-decoration: underline;
+    font-weight: bolder;
+
+}
+
+.info-text p{
+    font-size: 1.4em;
+    color: white;
+    margin-top: 5px;
+}
+
+.wrapper .bg-animate{
+    position: absolute;
+    top: -4px;
+    right: 0;
+    width: 850px;
+    height: 600px;
+    background: linear-gradient(45deg, black, rgb(183, 0, 255));
+    border-bottom: 3px solid rgb(183, 0, 255);
+    transform: rotate(10deg) skewY(40deg); 
+    transform-origin: bottom right;
+    transition: 2s ease;
+    transition-delay: 1.9s;
+}
+
+.wrapper.active .bg-animate{
+    transform: rotate(0) skewY(0);
+    transition-delay: .7s;
+}
+
+.wrapper .bg-animate2{
+    position: absolute;
+    top: 100%;
+    left: 250px;
+    width: 850px;
+    height: 700px;
+    background-image: url(./images/backIndex2.png);
+    border-top: 3px solid rgb(183, 0, 255);
+    transform: rotate(0) skewY(0);
+    transform-origin: bottom left;
+    transition: 2s ease;
+    transition-delay: .7s;
+}
+
+.wrapper.active .bg-animate2{
+    transform: rotate(-11deg) skewY(-41deg);
+    transition-delay: 1.5s;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important; /* match your dark background */
+  -webkit-text-fill-color: #eaf0ff !important;              /* keep text visible */
+  transition: background-color 5000s ease-in-out 0s;        /* prevents flash of white */
+}

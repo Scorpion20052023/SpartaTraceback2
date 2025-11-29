@@ -633,7 +633,7 @@ a {
 .cap {
     position: fixed;
     text-decoration: none;
-    top: 120px;
+    top: 105px;
     left: 55%;
     display: flex;
     margin: 0;
@@ -1628,9 +1628,6 @@ button:hover {
 
 .swipsect {
     width: 50%;
-    display: flex;;
-    justify-content: center;
-    align-items: center;
 }
 
 #pkgswiper {
@@ -1671,6 +1668,27 @@ button:hover {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.pkgTextActive {
+    display: flex !important;
+    animation: fadeInPkg 0.5s ease forwards;
+}
+
+.pkgTextActive {
+    display: flex !important;
+    animation: fadeInPkg 0.5s ease forwards;
+}
+
+@keyframes fadeInPkg {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -1785,7 +1803,6 @@ button:hover {
 #tokenwrapper h2 {
     color: rgb(242, 255, 0);
 }
-
 
 #tokenpag {
   --swiper-pagination-bottom: -2vh;

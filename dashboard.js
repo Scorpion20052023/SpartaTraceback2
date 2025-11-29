@@ -459,7 +459,43 @@ var pkgSwiper = new Swiper("#pkgswiper", {
     clickable: true,
   },
 
+  on: {
+    slideChange: function () {
+      const fixedIndex = this.realIndex % 4; // normalize index to 0–3
+      updatePkgText(fixedIndex);
+    },
+
+    click: function () {
+      this.slideToLoop(this.clickedIndex, 300); // true looping
+    }
+  }
 });
+
+// UPDATE TEXT FUNCTION
+function updatePkgText(index) {
+  const textBlocks = [
+    ".elitetext",
+    ".prestigetext",
+    ".deluxetext",
+    ".grandtext"
+  ];
+
+  // Hide all first
+  document.querySelectorAll(".elitetext, .prestigetext, .deluxetext, .grandtext")
+    .forEach(el => {
+      el.style.display = "none";
+      el.classList.remove("pkgTextActive");
+    });
+
+  // Show correct text
+  const block = document.querySelector(textBlocks[index]);
+  if (block) {
+    block.style.display = "flex";
+    block.classList.add("pkgTextActive");
+  }
+}
+
+
 
 
 //TOKEN SECTION
